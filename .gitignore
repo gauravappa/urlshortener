@@ -31,3 +31,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+infra/jenkins/jenkins_server_keypair.pem
+infra/jenkins/.terraform/*
+infra/jenkins/.terraform.lock.hcl
+infra/jenkins/terraform.tfstate
+infra/jenkins/terraform.tfstate.backup
+.DS_Store
+infra/.DS_Store

@@ -151,7 +151,17 @@ resource "aws_instance" "jenkins_agent_ec2" {
 
               # Install Java (required for Jenkins)
               sudo apt install fontconfig openjdk-21-jre -y
+              sudo apt-get install docker.io -y && sudo usermod -aG docker $USER && newgrp docker
+              # Create the Docker CLI plugins directory
+              mkdir -p ~/.docker/cli-plugins
 
+              # Detect architecture and download the Buildx binary
+              ARCH=$(uname -m)
+              if [ "$ARCH" = "x86_64" ]; then ARCH="amd64"; elif [ "$ARCH" = "aarch64" ]; then ARCH="arm64"; fi
+              curl -sSLo ~/.docker/cli-plugins/docker-buildx "https://github.com/docker/buildx/releases/download/v0.37.1/buildx-v0.37.1.linux-$ARCH"
+
+              # Apply executable permissions
+              chmod +x ~/.docker/cli-plugins/docker-buildx
               EOF
 
   tags = {

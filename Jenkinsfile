@@ -13,6 +13,7 @@ pipeline {
                 script{
                     clone("https://github.com/gauravappa/urlshortener.git","master")
                 }
+                echo "Cloning Successfull"
             }
         }
         stage("Build Docker Image"){

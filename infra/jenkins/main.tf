@@ -173,7 +173,7 @@ output "jenkins_url" {
   value = "http://${aws_instance.jenkins_ec2.public_ip}:8080"
 }
 
-# Output the private IP so you know where Jenkins needs to connect
-output "worker_node_private_ip" {
+# Output the public IP so you know where Jenkins needs to connect
+output "worker_node_public_ip" {
   value = aws_instance.jenkins_agent_ec2.public_ip
 }

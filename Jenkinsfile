@@ -10,10 +10,8 @@ pipeline {
         stage("Code"){
             steps{
                 echo "Start Cloning Repo"
-                script{
-                    clone("https://github.com/gauravappa/urlshortener.git","master")
-                }
-                echo "Cloning Successfull"
+                clone("https://github.com/gauravappa/urlshortener.git","master")
+
             }
         }
         stage("Build Docker Image"){
